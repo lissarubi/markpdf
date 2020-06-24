@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const fs = require('fs');
 const puppeteer = require('puppeteer');
 var markdown = require('markdown-it')();
@@ -19,7 +21,7 @@ function pagePDF(html) {
     const page = await browser.newPage();
     await page.setContent(html);
 
-    files[1] == undefined ? (files[1] = 'default.css') : null;
+    files[1] == undefined ? (files[1] = 'themes/default.css') : null;
 
     await page.addStyleTag({ path: files[1] });
     await page.emulateMedia('screen');

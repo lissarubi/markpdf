@@ -1,14 +1,18 @@
 {
   "name": "markpdf",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "description": "Markdown to PDF",
-  "main": "index.js",
+  "main": "src/index.js",
+  "bin": {
+    "markpdf": "src/index.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "markdown",
-    "pdf"
+    "pdf",
+    "cli"
   ],
   "author": "Ederson Ferreira",
   "license": "MIT",

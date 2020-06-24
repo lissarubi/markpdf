@@ -6,9 +6,11 @@ MarkPDF is a program what transform a Markdown file to a PDF
 
 ## Install
 
+Install Node with your packeage manager like ``sudo apt install nodejs``
+
 To install MarkPDF use:
 
-`npm install markpf`
+`npm install -g markpf`
 
 ## Exemple
 
@@ -121,6 +123,6 @@ If you want to create your theme, create a CSS file with a body class, defining 
 
 ## List of Themes
 
-[Default Theme](default.css)
+[Default Theme](themes/default.css)
 
 [Dark Theme](themes/dark.css)
