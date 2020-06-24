@@ -15,7 +15,7 @@ fs.readFile(files[0], 'utf8', (err, data) => {
 
 function pagePDF(html) {
   (async () => {
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({headless: true});
     const page = await browser.newPage();
     await page.setContent(html);
 
@@ -23,8 +23,11 @@ function pagePDF(html) {
 
     await page.addStyleTag({ path: files[1] });
     await page.emulateMedia('screen');
+
+    pdfFile = files[0].replace('.md', '.pdf')
+
     await page.pdf({
-      path: 'example.pdf',
+      path: pdfFile,
       format: 'A4',
       printBackground: true,
     });
