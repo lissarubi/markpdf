@@ -1,8 +1,6 @@
-# markpdf
+# MarkPDF
 
 MarkPDF is a program what transform a Markdown file to a PDF
-
-![logo](assets/logo.png)
 
 > Warning: Images can't be loaded in MarkPDF because Puppeteer.
 
@@ -10,17 +8,21 @@ MarkPDF is a program what transform a Markdown file to a PDF
 
 To install MarkPDF use:
 
-``npm install markpf``
+`npm install markpf`
+
+## Exemple
+
+To see this README in a PDF by MarkPDF [click here](README.pdf)
 
 ## Usage
 
-To use MarkPDF in a fast way, type ``markpdf`` and your Markdown file, simple.
+To use MarkPDF in a fast way, type `markpdf` and your Markdown file, simple.
 
-``markpdf myExemple.md``
+`markpdf myExemple.md`
 
 To use a personalizated theme, append your theme file name.
 
-``markpdf myExemple.md myTheme.css``
+`markpdf myExemple.md myTheme.css`
 
 ## Themes
 
@@ -59,6 +61,9 @@ code {
   background-color: #282a36;
   color: #f8f8f2;
   border-radius: 5px;
+}
+a {
+  text-decoration: none;
 }
 ```
 
@@ -100,11 +105,22 @@ code {
   color: #f8f8f2;
   border-radius: 5px;
 }
-a{
-    color: cyan;
+a {
+  color: cyan;
+  text-decoration: none;
 }
 ```
 
-if you want to use this theme, create a css file with this theme code, and run with ``markpdf``
+if you want to use this theme, create a css file with this theme code, and run with `markpdf`, like:
 
-``markpdf myText.md darktheme.css``
+`markpdf myText.md darktheme.css`
+
+## Creating Themes
+
+If you want to create your theme, create a CSS file with a body class, defining the font-family, background color, color of text,etc. a Table style, styles for h1, h2, h3, etc. And a style for the `<code></code>` tag. Create themes for MarkPDF is very simple and fast.
+
+## List of Themes
+
+[Default Theme](default.css)
+
+[Dark Theme](themes/dark.css)

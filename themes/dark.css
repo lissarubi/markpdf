@@ -33,6 +33,7 @@ code {
   color: #f8f8f2;
   border-radius: 5px;
 }
-a{
-    color: cyan;
+a {
+  color: cyan;
+  text-decoration: none;
 }
