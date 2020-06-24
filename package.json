@@ -1,6 +1,6 @@
 {
   "name": "markpdf",
-  "version": "1.5.0",
+  "version": "1.7.0",
   "description": "Markdown to PDF",
   "main": "index.js",
   "scripts": {
@@ -14,7 +14,6 @@
   "license": "MIT",
   "dependencies": {
     "markdown-it": "^11.0.0",
-    "puppeteer": "^4.0.0",
-    "puppeteer-firefox": "^0.5.1"
+    "puppeteer": "^4.0.0"
   }
 }
