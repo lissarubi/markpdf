@@ -10,7 +10,7 @@ Install Node with your packeage manager like ``sudo apt install nodejs``
 
 To install MarkPDF use:
 
-`npm install -g markpf`
+`npm install -g markpdf`
 
 ## Exemple
 
