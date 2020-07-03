@@ -6,7 +6,7 @@ MarkPDF is a program what transform a Markdown file to a PDF
 
 ## Install
 
-Install Node with your packeage manager like ``sudo apt install nodejs``
+Install Node with your packeage manager like `sudo apt install nodejs`
 
 To install MarkPDF use:
 
@@ -22,9 +22,26 @@ To use MarkPDF in a fast way, type `markpdf` and your Markdown file, simple.
 
 `markpdf myExemple.md`
 
-To use a personalizated theme, append your theme file name.
 
-`markpdf myExemple.md myTheme.css`
+## Using Themes
+
+To use a personalizated theme, append your theme file name with the `-f` or `--format` argument, like:
+
+`markpdf myExemple.md -t myTheme.css`
+
+or
+
+`markpdf myExemple.md --theme myTheme.css`
+
+## specificalling PDF size (like A4, A5,etc)
+
+If you want to define a specifically format, like A3, A2,etc (the default is A4), put it in the arguments with `-f` or `--format`, like:
+
+`markpdf myExemple.md -f A5 `
+
+or
+
+`markpdf myExemple.md --format A5 `
 
 ## Themes
 

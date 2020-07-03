@@ -18,6 +18,7 @@
   "license": "MIT",
   "dependencies": {
     "markdown-it": "^11.0.0",
+    "minimist": "^1.2.5",
     "puppeteer": "^4.0.0"
   }
 }
