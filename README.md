@@ -22,7 +22,6 @@ To use MarkPDF in a fast way, type `markpdf` and your Markdown file, simple.
 
 `markpdf myExemple.md`
 
-
 ## Using Themes
 
 To use a personalizated theme, append your theme file name with the `-f` or `--format` argument, like:
@@ -37,11 +36,11 @@ or
 
 If you want to define a specifically format, like A3, A2,etc (the default is A4), put it in the arguments with `-f` or `--format`, like:
 
-`markpdf myExemple.md -f A5 `
+`markpdf myExemple.md -f A5`
 
 or
 
-`markpdf myExemple.md --format A5 `
+`markpdf myExemple.md --format A5`
 
 ## Themes
 
