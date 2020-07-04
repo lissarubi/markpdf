@@ -37,11 +37,11 @@ function pagePDF(html) {
 
     await page.emulateMedia('screen');
 
-    if (argv.theme != undefined){
-      var format = argv.theme
+    if (argv.format != undefined){
+      var format = argv.format
     }
-    else if ( argv.t != undefined ){
-      var format = argv.t
+    else if ( argv.f != undefined ){
+      var format = argv.f
     }
     else {
       var format = 'A4'
