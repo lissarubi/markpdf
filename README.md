@@ -58,6 +58,19 @@ or
 
 An example of Landscape format applied to MarkPDF is [this README in Landscape Format](examples/landscape.pdf)
 
+## Mpdf (MarkPDF config file)
+
+If you have a project, what uses a certain format, theme and/or landscape, you can define a file called `mpdf.json` in the main tree of your project, the `mpdf.json` content have to be like:
+
+```json
+{
+    "theme": "myTheme.css",
+    "format": "A4",
+}
+```
+
+And now, if you use `markpdf myExample.md` and the `mdpdf.json` exist, this configs will be applied automaticly to your file. You don't have to pass the theme and format arguments.
+
 ## Themes
 
 The default theme is white, with the h1 centralizated, justified texts,etc. See source code in `themes` directory, or the links in the footer.
