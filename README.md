@@ -62,7 +62,7 @@ An example of Landscape format applied to MarkPDF is [this README in Landscape F
 
 If you have a project, what uses a certain format, theme and/or landscape, you can define a file called `mpdf.json` in the main tree of your project, the `mpdf.json` content have to be like:
 
-```node
+```js
 {
     "theme": "myTheme.css",
     "format": "A4",
