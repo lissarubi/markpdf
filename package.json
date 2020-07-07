@@ -1,6 +1,6 @@
 {
   "name": "markpdf",
-  "version": "2.7.0",
+  "version": "3.1.0",
   "description": "Markdown to PDF",
   "main": "src/index.js",
   "bin": {
@@ -22,6 +22,7 @@
   "author": "Ederson Ferreira",
   "license": "MIT",
   "dependencies": {
+    "express": "^4.17.1",
     "markdown-it": "^11.0.0",
     "minimist": "^1.2.5",
     "puppeteer": "^4.0.0"

@@ -2,6 +2,13 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   margin-top: -10010px;
 }
+img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+  max-height: 100%;
+}
 h1 {
   margin-top: 10010px;
   text-align: center;

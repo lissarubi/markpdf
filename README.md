@@ -2,8 +2,6 @@
 
 MarkPDF is a program what transform a Markdown file to a PDF
 
-> Warning: Images can't be loaded in MarkPDF because Puppeteer.
-
 ## Install
 
 Install Node with your packeage manager like `sudo apt install nodejs`
@@ -64,8 +62,8 @@ If you have a project, what uses a certain format, theme and/or landscape, you c
 
 ```json
 {
-    "theme": "myTheme.css",
-    "format": "A4",
+  "theme": "myTheme.css",
+  "format": "A4"
 }
 ```
 
