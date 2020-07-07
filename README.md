@@ -2,6 +2,9 @@
 
 MarkPDF is a program what transform a Markdown file to a PDF
 
+[Github](https://github.com/edersonferreira/markpdf)
+[npmjs](https://www.npmjs.com/package/markpdf)
+
 ## Install
 
 Install Node with your packeage manager like `sudo apt install nodejs`
