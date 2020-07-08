@@ -3,6 +3,7 @@
 MarkPDF is a program what transform a Markdown file to a PDF
 
 [Github](https://github.com/edersonferreira/markpdf)
+
 [npmjs](https://www.npmjs.com/package/markpdf)
 
 ## Install
@@ -15,7 +16,7 @@ To install MarkPDF use:
 
 ## Exemple
 
-To see this README in a PDF by MarkPDF [click here](examples/README.pdf)
+To see this README in a PDF by MarkPDF [click here](https://github.com/edersonferreira/markpdf/blob/master/examples/dark.pdf)
 
 # Usage
 
@@ -33,7 +34,7 @@ or
 
 `markpdf myExemple.md --theme myTheme.css`
 
-An example of theme applied to MarkPDF is [this README in a dark theme](examples/dark.pdf)
+An example of theme applied to MarkPDF is [this README in a dark theme](https://github.com/edersonferreira/markpdf/blob/master/examples/dark.pdf)
 
 ## specificalling PDF size (like A4, A5,etc)
 
@@ -45,7 +46,7 @@ or
 
 `markpdf myExemple.md --format A5`
 
-An example of paper format applied to MarkPDF is [this README in A5 paper format](examples/a5.pdf)
+An example of paper format applied to MarkPDF is [this README in A5 paper format](https://github.com/edersonferreira/markpdf/blob/master/examples/a5.pdf)
 
 ## Using landscape (horizontal)
 
@@ -57,7 +58,7 @@ or
 
 `markpdf myExemple.md --landscape`
 
-An example of Landscape format applied to MarkPDF is [this README in Landscape Format](examples/landscape.pdf)
+An example of Landscape format applied to MarkPDF is [this README in Landscape Format](https://github.com/edersonferreira/markpdf/blob/master/examples/landscape.pdf)
 
 ## Mpdf (MarkPDF config file)
 
