@@ -22,8 +22,7 @@ try {
 }
 
 // inject will transform all img.src of page, putting a http://localhost:3003 in the start of src value
-const inject =
-  'const imgs=document.getElementsByTagName("img");for(i=0;i<imgs.length;i++)console.log(imgs[i]),imgs[i].src=`http://localhost:3003/${imgs[i].getAttribute("src")}`;';
+const inject = fs.readFileSync(`${__dirname}/inject.js`, 'utf-8')
 
 // transform markdown to PDF
 try {
@@ -39,8 +38,7 @@ function pagePDF(html) {
     await page.setContent(html, { waitUntil: 'networkidle2' });
 
     // define the default CSS (if personalizated CSS doesn't exist, the default will be used)
-    const defaultCSS =
-      'body{font-family:Arial,Helvetica,sans-serif;margin-top:-10010px}img{display:block;margin-left:auto;margin-right:auto;max-width:100%;max-height:100%}h1{margin-top:10010px;text-align:center}p{text-align:justify}table{border-collapse:collapse;margin-left:auto;margin-right:auto}table,td,th{border:1px solid #000;padding:10px}pre{background-color:#282a36;color:#f8f8f2;display:block;border-radius:5px;padding:5px}code{background-color:#282a36;color:#f8f8f2;border-radius:5px}a{text-decoration:none}';
+    const defaultCSS = fs.readFileSync(`${__dirname}/../themes/default.css`, 'utf-8')
 
     // Test and apply (if exist) the config file exist, if not, the default configs will be applied
     var theme = false;

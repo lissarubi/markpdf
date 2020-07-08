@@ -69,7 +69,8 @@ If you have a project, what uses a certain format, theme and/or landscape, you c
 ```js
 {
   "theme": "myTheme.css",
-  "format": "A4"
+  "format": "A4",
+  "landscape": true
 }
 ```
 
@@ -85,6 +86,8 @@ If you want to create your theme, create a CSS file with a body class, defining 
 
 ## List of Themes
 
-[Default Theme](themes/default.css)
+[Default Theme]([themes/default.css](https://github.com/edersonferreira/markpdf/blob/master/themes/default.css))
 
-[Dark Theme](themes/dark.css)
+[Dark Theme](https://github.com/edersonferreira/markpdf/blob/master/themes/dark.css)
+
+[Brazilian ABNT Theme](https://github.com/edersonferreira/markpdf/blob/master/themes/abnt.css)
