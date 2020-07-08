@@ -16,7 +16,7 @@ To install MarkPDF use:
 
 ## Exemple
 
-To see this README in a PDF by MarkPDF [click here](https://github.com/edersonferreira/markpdf/blob/master/examples/dark.pdf)
+To see this README in a PDF by MarkPDF [click here](https://github.com/edersonferreira/markpdf/blob/master/examples/README.pdf)
 
 # Usage
 
