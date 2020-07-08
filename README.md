@@ -2,6 +2,8 @@
 
 MarkPDF is a program what transform a Markdown file to a PDF
 
+> Warning: Images must be inside the current directory, like assets/image.png, please, dont use external image links, download and put inside the current directory.
+
 [Github](https://github.com/edersonferreira/markpdf)
 
 [npmjs](https://www.npmjs.com/package/markpdf)
