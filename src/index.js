@@ -3,6 +3,7 @@
 var argv = require('minimist')(process.argv.slice(2));
 
 const fs = require('fs');
+const path = require('path');
 const puppeteer = require('puppeteer');
 const markdown = require('markdown-it')();
 const files = process.argv.splice(2);
@@ -44,12 +45,15 @@ function pagePDF(html) {
     );
 
     // Test and apply (if exist) the config file exist, if not, the default configs will be applied
-    var theme = false;
+
+    // themes is all themes code and themes names, this will be used later
+    const themes = getThemes();
+
+    var selectedTheme = false;
     var format = false;
     var landscape = false;
     var path = false;
     var number = false;
-
     try {
       const markpdfCFG = JSON.parse(fs.readFileSync('mpdf.json', 'utf-8'));
 
@@ -59,7 +63,15 @@ function pagePDF(html) {
         markpdfCFG.theme !== '' &&
         argv.t === undefined
       ) {
-        theme = true;
+        if (themes.names.indexOf(markpdfCFG.theme) > -1) {
+          // set the style based on theme name
+          await page.addStyleTag({
+            path: `${__dirname}/themes/${
+              themes.names[themes.names.indexOf(markpdfCFG.theme)]
+            }.css`,
+          });
+        }
+      } else {
         await page.addStyleTag({ path: markpdfCFG.theme });
       }
 
@@ -86,10 +98,28 @@ function pagePDF(html) {
 
     // check if personalizated theme exist
     if (argv.theme !== undefined) {
-      await page.addStyleTag({ path: argv.theme });
+      if (themes.names.indexOf(argv.theme) > -1) {
+        // set the style based on theme name
+        await page.addStyleTag({
+          path: `${__dirname}/themes/${
+            themes.names[themes.names.indexOf(argv.theme)]
+          }.css`,
+        });
+      } else {
+        await page.addStyleTag({ path: argv.theme });
+      }
     } else if (argv.t !== undefined) {
-      await page.addStyleTag({ path: argv.t });
-    } else if (theme === false) {
+      if (themes.names.indexOf(argv.t) > -1) {
+        // set the style based on theme name
+        await page.addStyleTag({
+          path: `${__dirname}/themes/${
+            themes.names[themes.names.indexOf(argv.t)]
+          }.css`,
+        });
+      } else {
+        await page.addStyleTag({ path: argv.t });
+      }
+    } else if (selectedTheme === false) {
       await page.addStyleTag({ content: defaultCSS });
     }
 
@@ -133,7 +163,7 @@ function pagePDF(html) {
       // print page
 
       // if the page number option is true, the number page will be applied
-      if (number){
+      if (number) {
         await page.pdf({
           path: path,
           format: format,
@@ -141,13 +171,14 @@ function pagePDF(html) {
           printBackground: true,
           displayHeaderFooter: true,
           headerTemplate: '<div/>',
-          footerTemplate: "<div style=\"text-align: right;width: 90vw;font-size: 12px;\"><span style=\"margin-right: 1cm\"><span class=\"pageNumber\"></span></span></div>",
-          margin: {top: 40, bottom: 40}
+          footerTemplate:
+            '<div style="text-align: right;width: 90vw;font-size: 12px;"><span style="margin-right: 1cm"><span class="pageNumber"></span></span></div>',
+          margin: { top: 40, bottom: 40 },
         });
       }
 
       // if the page number option is false, the number page not will be applied
-      else{
+      else {
         await page.pdf({
           path: path,
           format: format,
@@ -162,4 +193,22 @@ function pagePDF(html) {
     await browser.close();
     await server.close();
   })();
+}
+
+function getThemes() {
+  const themesCSS = [];
+  const themesNames = [];
+  //joining path of directory
+  const directoryPath = path.join(__dirname, 'themes');
+  //passsing directoryPath and callback function
+  fs.readdirSync(`${__dirname}/themes`).forEach((file) => {
+    //listing all files using forEach
+    themesCSS.push(fs.readFileSync(`${__dirname}/themes/${file}`, 'utf-8'));
+    themesNames.push(file.replace('.css', ''));
+  });
+  const themes = {
+    css: themesCSS,
+    names: themesNames,
+  };
+  return themes;
 }

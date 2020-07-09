@@ -36,6 +36,10 @@ or
 
 `markpdf myExemple.md --theme myTheme.css`
 
+If you want to use a theme in MarkPDF themes list, you can only write the theme name, like:
+
+`markpdf myExemple.md -t dark`
+
 An example of theme applied to MarkPDF is [this README in a dark theme](https://github.com/edersonferreira/markpdf/blob/master/examples/dark.pdf)
 
 ## specificalling PDF size (like A4, A5,etc)
@@ -66,21 +70,21 @@ An example of Landscape format applied to MarkPDF is [this README in Landscape F
 
 If you want to switch the output file directory and the pathname (name of the file), use `--path` or `-p` like:
 
-`markpdf myExemple.md --path MyDir/MyPdf.pdf`
+`markpdf myExemple.md -p MyDir/MyPdf.pdf`
 
 or
 
-`markpdf myExemple.md -p MyDir/MyPdf.pdf`
+`markpdf myExemple.md --path MyDir/MyPdf.pdf`
 
 ## Page Number
 
 If you want to put a page number in the footer of all pages, use `--number` or `-n`, like:
 
-`markpdf myExemple.md --number`
+`markpdf myExemple.md -n`
 
 or
 
-`markpdf myExemple.md -n`
+`markpdf myExemple.md --number`
 
 An example of Page Number applied to MarkPDF is [this README with Page Number](https://github.com/edersonferreira/markpdf/blob/master/examples/number.pdf)
 
@@ -98,7 +102,7 @@ If you have a project, what uses a certain format, theme and/or landscape, you c
 }
 ```
 
-And now, if you use `markpdf myExample.md` and the `mdpdf.json` exist, this configs will be applied automaticly to your file. You don't have to pass an argument, like,   if you forget the `theme` argument in `mpdf.json`, the default theme will be applied.
+And now, if you use `markpdf myExample.md` and the `mdpdf.json` exist, this configs will be applied automaticly to your file. You don't have to pass an argument, like, if you forget the `theme` argument in `mpdf.json`, the default theme will be applied.
 
 ## Themes
 
