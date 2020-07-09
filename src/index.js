@@ -39,7 +39,7 @@ function pagePDF(html) {
 
     // define the default CSS (if personalizated CSS doesn't exist, the default will be used)
     const defaultCSS = fs.readFileSync(
-      `${__dirname}/../themes/default.css`,
+      `${__dirname}/themes/default.css`,
       'utf-8',
     );
 
