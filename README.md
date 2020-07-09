@@ -62,6 +62,16 @@ or
 
 An example of Landscape format applied to MarkPDF is [this README in Landscape Format](https://github.com/edersonferreira/markpdf/blob/master/examples/landscape.pdf)
 
+## Switching Path
+
+If you want to switch the output file directory and the pathname (name of the file), use `--path` or `-p` like:
+
+`markpdf myExemple.md --path MyDir/MyPdf.pdf`
+
+or
+
+`markpdf myExemple.md -p MyDir/MyPdf.pdf`
+
 ## Mpdf (MarkPDF config file)
 
 If you have a project, what uses a certain format, theme and/or landscape, you can define a file called `mpdf.json` in the main tree of your project, the `mpdf.json` content have to be like:
@@ -86,7 +96,7 @@ If you want to create your theme, create a CSS file with a body class, defining 
 
 ## List of Themes
 
-[Default Theme]([themes/default.css](https://github.com/edersonferreira/markpdf/blob/master/themes/default.css))
+[Default Theme](<[themes/default.css](https://github.com/edersonferreira/markpdf/blob/master/themes/default.css)>)
 
 [Dark Theme](https://github.com/edersonferreira/markpdf/blob/master/themes/dark.css)
 

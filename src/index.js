@@ -10,7 +10,7 @@ const files = process.argv.splice(2);
 // this static server will serve all static files (like images) of the current directory to MarkPDF
 const express = require('express');
 const app = express();
-app.use(express.static( process.cwd() ));
+app.use(express.static(process.cwd()));
 const server = app.listen(3003);
 
 // get the Markdown file and transform to HTML
@@ -22,7 +22,7 @@ try {
 }
 
 // inject will transform all img.src of page, putting a http://localhost:3003 in the start of src value
-const inject = fs.readFileSync(`${__dirname}/inject.js`, 'utf-8')
+const inject = fs.readFileSync(`${__dirname}/inject.js`, 'utf-8');
 
 // transform markdown to PDF
 try {
@@ -38,12 +38,17 @@ function pagePDF(html) {
     await page.setContent(html, { waitUntil: 'networkidle2' });
 
     // define the default CSS (if personalizated CSS doesn't exist, the default will be used)
-    const defaultCSS = fs.readFileSync(`${__dirname}/../themes/default.css`, 'utf-8')
+    const defaultCSS = fs.readFileSync(
+      `${__dirname}/../themes/default.css`,
+      'utf-8',
+    );
 
     // Test and apply (if exist) the config file exist, if not, the default configs will be applied
     var theme = false;
     var format = false;
     var landscape = false;
+    var path = false;
+
     try {
       const markpdfCFG = JSON.parse(fs.readFileSync('mpdf.json', 'utf-8'));
 
@@ -65,6 +70,11 @@ function pagePDF(html) {
       // text if mpdf landscape exist
       if (markpdfCFG.landscape !== undefined && markpdfCFG.landscape !== '') {
         var landscape = markpdfCFG.landscape;
+      }
+
+      // path of the output file
+      if (markpdfCFG.path !== undefined && markpdfCFG.path !== '') {
+        var path = markpdfCFG.path;
       }
     } catch (err) {}
 
@@ -97,13 +107,27 @@ function pagePDF(html) {
 
     pdfFile = files[0].replace('.md', '.pdf');
 
-    // print page
-    await page.pdf({
-      path: pdfFile,
-      format: format,
-      landscape: landscape,
-      printBackground: true,
-    });
+    // check if path exist
+    if (argv.path !== undefined) {
+      var path = argv.path;
+    } else if (argv.p !== undefined) {
+      var path = argv.p;
+    } else if (path === false) {
+      var path = pdfFile;
+    }
+
+    try {
+      // print page
+      await page.pdf({
+        path: path,
+        format: format,
+        landscape: landscape,
+        printBackground: true,
+      });
+    } catch (err) {
+      console.log(`There was an error on printing the pdf, error: ${err}`);
+    }
+
     await browser.close();
     await server.close();
   })();
