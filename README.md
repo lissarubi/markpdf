@@ -72,6 +72,18 @@ or
 
 `markpdf myExemple.md -p MyDir/MyPdf.pdf`
 
+## Page Number
+
+If you want to put a page number in the footer of all pages, use `--number` or `-n`, like:
+
+`markpdf myExemple.md --number`
+
+or
+
+`markpdf myExemple.md -n`
+
+An example of Page Number applied to MarkPDF is [this README with Page Number](https://github.com/edersonferreira/markpdf/blob/master/examples/number.pdf)
+
 ## Mpdf (MarkPDF config file)
 
 If you have a project, what uses a certain format, theme and/or landscape, you can define a file called `mpdf.json` in the main tree of your project, the `mpdf.json` content have to be like:
@@ -80,11 +92,13 @@ If you have a project, what uses a certain format, theme and/or landscape, you c
 {
   "theme": "myTheme.css",
   "format": "A4",
-  "landscape": true
+  "landscape": true,
+  "path": "pdf/myPdf.pdf",
+  "number": true
 }
 ```
 
-And now, if you use `markpdf myExample.md` and the `mdpdf.json` exist, this configs will be applied automaticly to your file. You don't have to pass the theme and format arguments.
+And now, if you use `markpdf myExample.md` and the `mdpdf.json` exist, this configs will be applied automaticly to your file. You don't have to pass an argument, like,   if you forget the `theme` argument in `mpdf.json`, the default theme will be applied.
 
 ## Themes
 
@@ -96,8 +110,8 @@ If you want to create your theme, create a CSS file with a body class, defining 
 
 ## List of Themes
 
-[Default Theme](<[themes/default.css](https://github.com/edersonferreira/markpdf/blob/master/themes/default.css)>)
+[Default Theme](https://github.com/edersonferreira/markpdf/blob/master/src/themes/default.css)
 
-[Dark Theme](https://github.com/edersonferreira/markpdf/blob/master/themes/dark.css)
+[Dark Theme](https://github.com/edersonferreira/markpdf/blob/master/src/themes/dark.css)
 
-[Brazilian ABNT Theme](https://github.com/edersonferreira/markpdf/blob/master/themes/abnt.css)
+[Brazilian ABNT Theme](https://github.com/edersonferreira/markpdf/blob/master/src/themes/abnt.css)

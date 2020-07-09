@@ -48,6 +48,7 @@ function pagePDF(html) {
     var format = false;
     var landscape = false;
     var path = false;
+    var number = false;
 
     try {
       const markpdfCFG = JSON.parse(fs.readFileSync('mpdf.json', 'utf-8'));
@@ -75,6 +76,11 @@ function pagePDF(html) {
       // path of the output file
       if (markpdfCFG.path !== undefined && markpdfCFG.path !== '') {
         var path = markpdfCFG.path;
+      }
+
+      // number of pages
+      if (markpdfCFG.number !== undefined && markpdfCFG.number !== '') {
+        var number = markpdfCFG.number;
       }
     } catch (err) {}
 
@@ -116,14 +122,39 @@ function pagePDF(html) {
       var path = pdfFile;
     }
 
+    // check if path exist
+    if (argv.number !== undefined) {
+      var number = true;
+    } else if (argv.n !== undefined) {
+      var number = true;
+    }
+
     try {
       // print page
-      await page.pdf({
-        path: path,
-        format: format,
-        landscape: landscape,
-        printBackground: true,
-      });
+
+      // if the page number option is true, the number page will be applied
+      if (number){
+        await page.pdf({
+          path: path,
+          format: format,
+          landscape: landscape,
+          printBackground: true,
+          displayHeaderFooter: true,
+          headerTemplate: '<div/>',
+          footerTemplate: "<div style=\"text-align: right;width: 90vw;font-size: 12px;\"><span style=\"margin-right: 1cm\"><span class=\"pageNumber\"></span></span></div>",
+          margin: {top: 40, bottom: 40}
+        });
+      }
+
+      // if the page number option is false, the number page not will be applied
+      else{
+        await page.pdf({
+          path: path,
+          format: format,
+          landscape: landscape,
+          printBackground: true,
+        });
+      }
     } catch (err) {
       console.log(`There was an error on printing the pdf, error: ${err}`);
     }
