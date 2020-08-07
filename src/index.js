@@ -50,14 +50,15 @@ function pagePDF(html) {
     const themes = getThemes();
 
     var selectedTheme = false;
-    var format = false;
+    var format = 'A4';
     var landscape = false;
-    var path = false;
+    var path = files[0].replace('.md', '.pdf');
     var number = false;
+
     try {
       const markpdfCFG = JSON.parse(fs.readFileSync('mpdf.json', 'utf-8'));
 
-      // test if mpdf theme exist
+      // test if mpdf theme exist, if not, will be applied the default theme.
       if (
         markpdfCFG.theme !== undefined &&
         markpdfCFG.theme !== '' &&
@@ -70,11 +71,12 @@ function pagePDF(html) {
               themes.names[themes.names.indexOf(markpdfCFG.theme)]
             }.css`,
           });
+        } else {
+          await page.addStyleTag({ path: markpdfCFG.theme });
         }
       } else {
-        await page.addStyleTag({ path: markpdfCFG.theme });
+        await page.addStyleTag({ content: defaultCSS });
       }
-
       // test if mpdf format exist
       if (markpdfCFG.format !== undefined && markpdfCFG.format !== '') {
         var format = markpdfCFG.format;
@@ -94,7 +96,9 @@ function pagePDF(html) {
       if (markpdfCFG.number !== undefined && markpdfCFG.number !== '') {
         var number = markpdfCFG.number;
       }
-    } catch (err) {}
+    } catch (err) {
+      console.log(err);
+    }
 
     // check if personalizated theme exist
     if (argv.theme !== undefined) {
@@ -141,15 +145,11 @@ function pagePDF(html) {
       var landscape = true;
     }
 
-    pdfFile = files[0].replace('.md', '.pdf');
-
     // check if path exist
     if (argv.path !== undefined) {
       var path = argv.path;
     } else if (argv.p !== undefined) {
       var path = argv.p;
-    } else if (path === false) {
-      var path = pdfFile;
     }
 
     // check if path exist
@@ -198,9 +198,7 @@ function pagePDF(html) {
 function getThemes() {
   const themesCSS = [];
   const themesNames = [];
-  //joining path of directory
-  const directoryPath = path.join(__dirname, 'themes');
-  //passsing directoryPath and callback function
+  //passsing directory of themes and callback function
   fs.readdirSync(`${__dirname}/themes`).forEach((file) => {
     //listing all files using forEach
     themesCSS.push(fs.readFileSync(`${__dirname}/themes/${file}`, 'utf-8'));
