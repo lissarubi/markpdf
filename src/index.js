@@ -96,9 +96,7 @@ function pagePDF(html) {
       if (markpdfCFG.number !== undefined && markpdfCFG.number !== '') {
         var number = markpdfCFG.number;
       }
-    } catch (err) {
-      console.log(err);
-    }
+    } catch (err) {}
 
     // check if personalizated theme exist
     if (argv.theme !== undefined) {
