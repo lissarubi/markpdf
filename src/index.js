@@ -7,6 +7,7 @@ const path = require('path');
 const puppeteer = require('puppeteer');
 const markdown = require('markdown-it')();
 const files = process.argv.splice(2);
+const mergePdf = require('./mergePdf');
 
 // this static server will serve all static files (like images) of the current directory to MarkPDF
 const express = require('express');
@@ -150,7 +151,7 @@ function pagePDF(html) {
       var path = argv.p;
     }
 
-    // check if path exist
+    // check if number exist
     if (argv.number !== undefined) {
       var number = true;
     } else if (argv.n !== undefined) {
@@ -186,6 +187,24 @@ function pagePDF(html) {
       }
     } catch (err) {
       console.log(`There was an error on printing the pdf, error: ${err}`);
+    }
+    try {
+      const markpdfCFG = JSON.parse(fs.readFileSync('mpdf.json', 'utf-8'));
+      if (markpdfCFG.before != undefined && markpdfCFG.after != undefined) {
+        mergePdf(path, markpdfCFG.before, markpdfCFG.after);
+      } else if (markpdfCFG.before != undefined) {
+        mergePdf(path, markpdfCFG.before, '');
+      } else if (markpdfCFG.after != undefined) {
+        mergePdf(path, '', markpdfCFG.after);
+      }
+    } catch (err) {}
+
+    if (argv.before != undefined && argv.after != undefined) {
+      mergePdf(path, argv.before, argv.after);
+    } else if (argv.before != undefined) {
+      mergePdf(path, argv.before, '');
+    } else if (argv.after != undefined) {
+      mergePdf(path, '', argv.after);
     }
 
     await browser.close();

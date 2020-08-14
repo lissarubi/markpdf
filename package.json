@@ -22,9 +22,11 @@
   "author": "Ederson Ferreira",
   "license": "MIT",
   "dependencies": {
+    "colors": "^1.4.0",
     "express": "^4.17.1",
     "markdown-it": "^11.0.0",
     "minimist": "^1.2.5",
+    "pdf-lib": "^1.10.0",
     "puppeteer": "^4.0.0"
   }
 }

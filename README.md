@@ -88,17 +88,29 @@ or
 
 An example of Page Number applied to MarkPDF is [this README with Page Number](https://github.com/edersonferreira/markpdf/blob/master/examples/number.pdf)
 
+## Add PDF's Before or After
+
+If you want to add a PDF's (not Markdown) before or after your PDF (Your markdown what you will transform to PDF), you can do it with `--before` and `--after` arguments, like:
+
+`markpdf myExemple.md --before beforePdf.pdf`
+
+and you can pass multiple PDF's
+
+`markpdf myExemple.md --after afterPdf.pdf,anotherAfterPdf.pdf`
+
 ## Mpdf (MarkPDF config file)
 
 If you have a project, what uses a certain format, theme and/or landscape, you can define a file called `mpdf.json` in the main tree of your project, the `mpdf.json` content have to be like:
 
-```js
+```json
 {
   "theme": "myTheme.css",
   "format": "A4",
   "landscape": true,
   "path": "pdf/myPdf.pdf",
-  "number": true
+  "number": true,
+  "before": "beforePdf.pdf",
+  "after": "afterPdf.pdf"
 }
 ```
 
