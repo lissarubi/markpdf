@@ -116,6 +116,18 @@ If you have a project, what uses a certain format, theme and/or landscape, you c
 
 And now, if you use `markpdf myExample.md` and the `mdpdf.json` exist, this configs will be applied automaticly to your file. You don't have to pass an argument, like, if you forget the `theme` argument in `mpdf.json`, the default theme will be applied.
 
+## Adding personalizated style with inline CSS in your file
+
+If you need to apply a CSS change, and you don't want to create a theme to do this, you can define this using a div, with your style, like this:
+
+```html
+<div style="color:red">
+Now, my text is Red!
+<div>
+```
+
+You can use this to build any style with CSS, using displays, background, color, margin, or anything.
+
 ## Themes
 
 The default theme is white, with the h1 centralizated, justified texts,etc. See source code in `themes` directory, or the links in the footer.
