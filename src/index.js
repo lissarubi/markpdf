@@ -188,6 +188,9 @@ function pagePDF(html) {
     } catch (err) {
       console.log(`There was an error on printing the pdf, error: ${err}`);
     }
+
+    // Get before or after arguments in Mpdf
+
     try {
       const markpdfCFG = JSON.parse(fs.readFileSync('mpdf.json', 'utf-8'));
       if (markpdfCFG.before != undefined && markpdfCFG.after != undefined) {
@@ -199,6 +202,7 @@ function pagePDF(html) {
       }
     } catch (err) {}
 
+    // Get before or after arguments
     if (argv.before != undefined && argv.after != undefined) {
       mergePdf(path, argv.before, argv.after);
     } else if (argv.before != undefined) {

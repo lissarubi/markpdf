@@ -40,6 +40,8 @@ If you want to use a theme in MarkPDF themes list, you can only write the theme 
 
 `markpdf myExemple.md -t dark`
 
+See the theme list in the bottom of this README.
+
 An example of theme applied to MarkPDF is [this README in a dark theme](https://github.com/edersonferreira/markpdf/blob/master/examples/dark.pdf)
 
 ## specificalling PDF size (like A4, A5,etc)
