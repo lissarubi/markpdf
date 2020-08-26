@@ -145,3 +145,5 @@ If you want to create your theme, create a CSS file with a body class, defining 
 [Dark Theme](https://github.com/edersonferreira/markpdf/blob/master/src/themes/dark.css)
 
 [Brazilian ABNT Theme](https://github.com/edersonferreira/markpdf/blob/master/src/themes/abnt.css)
+
+[Programmer Theme](https://github.com/edersonferreira/markpdf/blob/master/src/themes/programmer.css)
