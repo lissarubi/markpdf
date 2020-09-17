@@ -18,7 +18,7 @@ MarkPDF is a program what transform a Markdown file to a PDF
 - [Switching Path](#switching-path)
 - [Page Number](#Page-number)
 - [Add PDF's Before or After](#add-pdf's-before-or-after)
-- [Mpdf (#MarkPDF config file)](mpdf-(Markpdf-config-file))
+- [Mpdf (#MarkPDF config file)](#mpdf-(Markpdf-config-file))
 - [Adding personalizated style with inline CSS in your file](#adding-personalizated-style-with-inline-css-in-your-file)
 - [Themes](#themes)
 - [Creating Themes](#creating-themes)
