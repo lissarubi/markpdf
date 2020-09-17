@@ -8,3 +8,5 @@ const imgs = document.getElementsByTagName('img');
 for (i = 0; i < imgs.length; i++) {
   imgs[i].src = `http://localhost:3003/${imgs[i].getAttribute('src')}`;
 }
+
+console.log(document)

@@ -25,7 +25,6 @@ try {
 
 // inject will transform all img.src of page, putting a http://localhost:3003 in the start of src value
 const inject = fs.readFileSync(`${__dirname}/inject.js`, 'utf-8');
-
 // transform markdown to PDF
 try {
   pagePDF(`${markdownHTML}<script>${inject}</script>`);
@@ -44,6 +43,20 @@ function pagePDF(html) {
       `${__dirname}/themes/default.css`,
       'utf-8',
     );
+
+    // add Bootstrap CSS
+    const bootstrapCSS = fs.readFileSync(
+      `${__dirname}/bootstrap/bootstrap.min.css`,
+      'utf8',
+    );
+    await page.addStyleTag({ content: bootstrapCSS });
+
+    // add Bootstrap JS
+    const bootstrapScript = fs.readFileSync(
+      `${__dirname}/bootstrap/bootstrap.min.js`,
+      'utf8',
+    );
+    await page.addScriptTag({ content: bootstrapScript });
 
     // Test and apply (if exist) the config file exist, if not, the default configs will be applied
 
@@ -212,7 +225,7 @@ function pagePDF(html) {
     }
 
     await browser.close();
-    await server.close();
+    server.close();
   })();
 }
 

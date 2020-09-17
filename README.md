@@ -8,6 +8,22 @@ MarkPDF is a program what transform a Markdown file to a PDF
 
 [npmjs](https://www.npmjs.com/package/markpdf)
 
+- [Install](#install)
+- [Exemple](#example)
+- [Usage](#usage)
+- [Using Themes](#using-themes)
+- [specificalling PDF size (like A4, A5,etc)](specificalling-pdf-size)
+- [Using landscape (horizontal)](using-landscape-(horizontal))
+- [Using with Bootstrap](using-with-bootstrap)
+- [Switching Path](switching-path)
+- [Page Number](Page-number)
+- [Add PDF's Before or After](add-pdf's-before-or-after)
+- [Mpdf (MarkPDF config file)](mpdf-(Markpdf-config-file))
+- [Adding personalizated style with inline CSS in your file](adding-personalizated-style-with-inline-css-in-your-file)
+- [Themes](themes)
+- [Creating Themes](creating-themes)
+- [List of Themes](list-of-themes)
+
 ## Install
 
 Install Node with your packeage manager like `sudo apt install nodejs`
@@ -44,7 +60,7 @@ See the theme list in the bottom of this README.
 
 An example of theme applied to MarkPDF is [this README in a dark theme](https://github.com/edersonferreira/markpdf/blob/master/examples/dark.pdf)
 
-## specificalling PDF size (like A4, A5,etc)
+## specificalling PDF size
 
 If you want to define a specifically format, like A3, A2,etc (the default is A4), put it in the arguments with `-f` or `--format`, like:
 
@@ -67,6 +83,10 @@ or
 `markpdf myExemple.md --landscape`
 
 An example of Landscape format applied to MarkPDF is [this README in Landscape Format](https://github.com/edersonferreira/markpdf/blob/master/examples/landscape.pdf)
+
+## Using with Bootstrap
+
+MarkPDF accepts any Bootstrap class, like `w-100`, or `pr-5`. You can use divs, h1, h2,etc. in for file with Bootstrap, because MarkPDF will understand it.
 
 ## Switching Path
 
