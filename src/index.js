@@ -21,6 +21,7 @@ try {
   var markdownHTML = markdown.render(markdownFile);
 } catch (err) {
   console.log("the input file doesn't exist.");
+  server.close();
 }
 
 // inject will transform all img.src of page, putting a http://localhost:3003 in the start of src value
