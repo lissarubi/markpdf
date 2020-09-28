@@ -24,22 +24,22 @@ h6 {
   color: #39ee14;
 }
 h1::before {
-  content: "# ";
+  content: '# ';
 }
 h2::before {
-  content: "## ";
+  content: '## ';
 }
 h3::before {
-  content: "### ";
+  content: '### ';
 }
 h4::before {
-  content: "#### ";
+  content: '#### ';
 }
 h5::before {
-  content: "##### ";
+  content: '##### ';
 }
 h6::before {
-  content: "###### ";
+  content: '###### ';
 }
 p {
   text-align: justify;
