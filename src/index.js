@@ -52,13 +52,6 @@ function pagePDF(html) {
     );
     await page.addStyleTag({ content: bootstrapCSS });
 
-    // add Bootstrap JS
-    const bootstrapScript = fs.readFileSync(
-      `${__dirname}/bootstrap/bootstrap.min.js`,
-      'utf8',
-    );
-    await page.addScriptTag({ content: bootstrapScript });
-
     // Test and apply (if exist) the config file exist, if not, the default configs will be applied
 
     // themes is all themes code and themes names, this will be used later
