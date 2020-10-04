@@ -98,6 +98,7 @@ hr {
   height: 0;
 }
 pre {
+  font-size: 3ch;
   overflow: auto;
 }
 code,
