@@ -1,6 +1,6 @@
 # MarkPDF
 
-MarkPDF is a program what transform a Markdown file to a PDF
+MarkPDF is a program that transforms a Markdown file to a PDF
 
 > Warning: Images must be inside the current directory, like assets/image.png, please, dont use external image links, download and put inside the current directory.
 
