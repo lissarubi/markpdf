@@ -1076,7 +1076,6 @@ button,
 input,
 select,
 textarea {
-  font-family: inherit;
   font-size: inherit;
   line-height: inherit;
 }
@@ -1167,7 +1166,6 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: inherit;
   font-weight: 500;
   line-height: 1.1;
   color: inherit;
@@ -6870,7 +6868,6 @@ button.close {
   visibility: hidden;
 }
 .text-hide {
-  font: 0/0 a;
   color: transparent;
   text-shadow: none;
   background-color: transparent;
