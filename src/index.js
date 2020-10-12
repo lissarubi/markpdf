@@ -54,14 +54,12 @@ function pagePDF(html) {
 
     // Test and apply (if exist) the config file exist, if not, the default configs will be applied
 
-    // themes is all themes code and themes names, this will be used later
-    const themes = getThemes();
-
     var selectedTheme = false;
     var format = 'A4';
     var landscape = false;
     var path = files[0].replace('.md', '.pdf');
     var number = false;
+    var appendedCSS = Array();
 
     try {
       const markpdfCFG = JSON.parse(fs.readFileSync('mpdf.json', 'utf-8'));
@@ -73,7 +71,9 @@ function pagePDF(html) {
         argv.t === undefined
       ) {
         if (themes.names.indexOf(markpdfCFG.theme) > -1) {
-          // set the style based on theme name
+          // get all default themes of Markpdf
+          const themes = getThemes();
+          // set the style based on theme name or use the user selected theme
           await page.addStyleTag({
             path: `${__dirname}/themes/${
               themes.names[themes.names.indexOf(markpdfCFG.theme)]
@@ -85,6 +85,7 @@ function pagePDF(html) {
       } else {
         await page.addStyleTag({ content: defaultCSS });
       }
+
       // test if mpdf format exist
       if (markpdfCFG.format !== undefined && markpdfCFG.format !== '') {
         var format = markpdfCFG.format;
@@ -104,12 +105,17 @@ function pagePDF(html) {
       if (markpdfCFG.number !== undefined && markpdfCFG.number !== '') {
         var number = markpdfCFG.number;
       }
+
+      // Appended CSS
+      if (markpdfCFG.css !== undefined && markpdfCFG.css !== '') {
+        var appendedCSS = markpdfCFG.css.split(',');
+      }
     } catch (err) {}
 
     // check if personalizated theme exist
     if (argv.theme !== undefined) {
       if (themes.names.indexOf(argv.theme) > -1) {
-        // set the style based on theme name
+        // set the style based on theme name or use the user selected theme
         await page.addStyleTag({
           path: `${__dirname}/themes/${
             themes.names[themes.names.indexOf(argv.theme)]
@@ -164,6 +170,18 @@ function pagePDF(html) {
     } else if (argv.n !== undefined) {
       var number = true;
     }
+
+    // check if appendedCSS exists
+    if (argv.css !== undefined) {
+      var appendedCSS = argv.css.split(',');
+    } else if (argv.c !== undefined) {
+      var appendedCSS = argv.c.split(',');
+    }
+
+    // Append CSS files
+    appendedCSS.forEach((file) => {
+      page.addStyleTag({ path: file });
+    });
 
     try {
       // print page

@@ -18,9 +18,10 @@ MarkPDF is a program that transforms a Markdown file to a PDF
 - [Switching Path](#switching-path)
 - [Page Number](#page-number)
 - [Add PDF's Before or After](#add-pdfs-before-or-after)
-- [Mpdf (MarkPDF config file)](#mpdf-markpdf-config-file)
 - [Adding personalizated style with inline CSS in your file](#adding-personalizated-style-with-inline-css-in-your-file)
+- [Append CSS files](#append-css-files)
 - [Themes](#themes)
+- [Mpdf (MarkPDF config file)](#mpdf-markpdf-config-file)
 - [Creating Themes](#creating-themes)
 - [List of Themes](#list-of-themes)
 
@@ -120,6 +121,37 @@ and you can pass multiple PDF's
 
 `markpdf myExemple.md --after afterPdf.pdf,anotherAfterPdf.pdf`
 
+## Adding personalizated style with inline CSS in your file
+
+If you need to apply a CSS change, and you don't want to create a theme to do this, you can define this using a div, with your style, like this:
+
+```html
+<div style="color:red">
+Now, my text is Red!
+<div>
+```
+
+You can use this to build any style with CSS, using displays, background, color, margin, or anything.
+
+## Append CSS Files
+
+To append CSS files, you can use the option `-c` or `-css` with the CSS file or multiple files.
+
+```
+markpdf myExample.md -c MyCSSFile.css
+```
+
+or
+
+```
+markpdf myExample.md -css MyCSSFile.css
+```
+
+## Themes
+
+The default theme is white, with the h1 centralizated, justified texts,etc. See source code in `themes` directory, or the links in the footer.
+
+
 ## Mpdf (MarkPDF config file)
 
 If you have a project, what uses a certain format, theme and/or landscape, you can define a file called `mpdf.json` in the main tree of your project, the `mpdf.json` content have to be like:
@@ -137,22 +169,6 @@ If you have a project, what uses a certain format, theme and/or landscape, you c
 ```
 
 And now, if you use `markpdf myExample.md` and the `mdpdf.json` exist, this configs will be applied automaticly to your file. You don't have to pass an argument, like, if you forget the `theme` argument in `mpdf.json`, the default theme will be applied.
-
-## Adding personalizated style with inline CSS in your file
-
-If you need to apply a CSS change, and you don't want to create a theme to do this, you can define this using a div, with your style, like this:
-
-```html
-<div style="color:red">
-Now, my text is Red!
-<div>
-```
-
-You can use this to build any style with CSS, using displays, background, color, margin, or anything.
-
-## Themes
-
-The default theme is white, with the h1 centralizated, justified texts,etc. See source code in `themes` directory, or the links in the footer.
 
 ## Creating Themes
 
