@@ -1,6 +1,6 @@
 {
   "name": "markpdf",
-  "version": "5.9.0",
+  "version": "6.0.0",
   "description": "Markdown to PDF",
   "main": "src/index.js",
   "bin": {
