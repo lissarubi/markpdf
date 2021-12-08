@@ -127,8 +127,9 @@ If you need to apply a CSS change, and you don't want to create a theme to do th
 
 ```html
 <div style="color:red">
-Now, my text is Red!
-<div>
+  Now, my text is Red!
+  <div></div>
+</div>
 ```
 
 You can use this to build any style with CSS, using displays, background, color, margin, or anything.
@@ -150,7 +151,6 @@ markpdf myExample.md -css MyCSSFile.css
 ## Themes
 
 The default theme is white, with the h1 centralizated, justified texts,etc. See source code in `themes` directory, or the links in the footer.
-
 
 ## Mpdf (MarkPDF config file)
 

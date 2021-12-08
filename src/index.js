@@ -3,7 +3,6 @@
 var argv = require('minimist')(process.argv.slice(2));
 
 const fs = require('fs');
-const puppeteer = require('puppeteer');
 const markdown = require('markdown-it')({ html: true });
 const files = process.argv.splice(2);
 const pagePDF = require('./pagePDF')

@@ -17,6 +17,10 @@ h1 {
 }
 p {
   text-align: justify;
+  font-size: 2.7ch;
+}
+blockquote {
+  font-size: 2ch;
 }
 table {
   border-collapse: collapse;
@@ -27,7 +31,7 @@ table {
 table,
 th,
 td {
-  border: 1px solid black;
+  border: 1px solid white;
   padding: 10px;
 }
 pre {

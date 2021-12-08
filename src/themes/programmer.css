@@ -12,10 +12,10 @@ img {
   max-height: 100%;
 }
 h1 {
-  color: #39ee14;
   margin-top: 10010px;
   text-align: center;
 }
+h1,
 h2,
 h3,
 h4,
@@ -24,25 +24,29 @@ h6 {
   color: #39ee14;
 }
 h1::before {
-  content: '# ';
+  content: "# ";
 }
 h2::before {
-  content: '## ';
+  content: "## ";
 }
 h3::before {
-  content: '### ';
+  content: "### ";
 }
 h4::before {
-  content: '#### ';
+  content: "#### ";
 }
 h5::before {
-  content: '##### ';
+  content: "##### ";
 }
 h6::before {
-  content: '###### ';
+  content: "###### ";
 }
 p {
   text-align: justify;
+  font-size: 2.7ch;
+}
+blockquote {
+  font-size: 2ch;
 }
 table {
   border-collapse: collapse;
@@ -53,7 +57,7 @@ table {
 table,
 th,
 td {
-  border: 1px solid black;
+  border: 1px solid white;
   padding: 10px;
 }
 pre {

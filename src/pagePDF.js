@@ -1,45 +1,45 @@
-const puppeteer = require('puppeteer');
-const fs = require('fs');
-const getThemes = require('./getThemes');
-const mergePdf = require('./mergePdf');
+const puppeteer = require("puppeteer");
+const fs = require("fs");
+const getThemes = require("./getThemes");
+const mergePdf = require("./mergePdf");
 
-themes = getThemes()
+themes = getThemes();
 
 function pagePDF(html, files, argv) {
   (async () => {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
-    await page.setContent(html, { waitUntil: 'networkidle2' });
+    await page.setContent(html, { waitUntil: "networkidle2" });
 
     // define the default CSS (if personalizated CSS doesn't exist, the default will be used)
     const defaultCSS = fs.readFileSync(
       `${__dirname}/themes/default.css`,
-      'utf-8',
+      "utf-8"
     );
 
     // add Bootstrap CSS
     const bootstrapCSS = fs.readFileSync(
       `${__dirname}/bootstrap/bootstrap.min.css`,
-      'utf8',
+      "utf8"
     );
     await page.addStyleTag({ content: bootstrapCSS });
 
     // Test and apply (if exist) the config file exist, if not, the default configs will be applied
 
     var selectedTheme = false;
-    var format = 'A4';
+    var format = "A4";
     var landscape = false;
-    var path = files[0].replace('.md', '.pdf');
+    var path = files[0].replace(".md", ".pdf");
     var number = false;
     var appendedCSS = Array();
 
     try {
-      const markpdfCFG = JSON.parse(fs.readFileSync('mpdf.json', 'utf-8'));
+      const markpdfCFG = JSON.parse(fs.readFileSync("mpdf.json", "utf-8"));
 
       // test if mpdf theme exist, if not, will be applied the default theme.
       if (
         markpdfCFG.theme !== undefined &&
-        markpdfCFG.theme !== '' &&
+        markpdfCFG.theme !== "" &&
         argv.t === undefined
       ) {
         if (themes.names.indexOf(markpdfCFG.theme) > -1) {
@@ -59,28 +59,28 @@ function pagePDF(html, files, argv) {
       }
 
       // test if mpdf format exist
-      if (markpdfCFG.format !== undefined && markpdfCFG.format !== '') {
+      if (markpdfCFG.format !== undefined && markpdfCFG.format !== "") {
         var format = markpdfCFG.format;
       }
 
       // text if mpdf landscape exist
-      if (markpdfCFG.landscape !== undefined && markpdfCFG.landscape !== '') {
+      if (markpdfCFG.landscape !== undefined && markpdfCFG.landscape !== "") {
         var landscape = markpdfCFG.landscape;
       }
 
       // path of the output file
-      if (markpdfCFG.path !== undefined && markpdfCFG.path !== '') {
+      if (markpdfCFG.path !== undefined && markpdfCFG.path !== "") {
         var path = markpdfCFG.path;
       }
 
       // number of pages
-      if (markpdfCFG.number !== undefined && markpdfCFG.number !== '') {
+      if (markpdfCFG.number !== undefined && markpdfCFG.number !== "") {
         var number = markpdfCFG.number;
       }
 
       // Appended CSS
-      if (markpdfCFG.css !== undefined && markpdfCFG.css !== '') {
-        var appendedCSS = markpdfCFG.css.split(',');
+      if (markpdfCFG.css !== undefined && markpdfCFG.css !== "") {
+        var appendedCSS = markpdfCFG.css.split(",");
       }
     } catch (err) {}
 
@@ -111,7 +111,7 @@ function pagePDF(html, files, argv) {
       await page.addStyleTag({ content: defaultCSS });
     }
 
-    await page.emulateMedia('screen');
+    await page.emulateMedia("screen");
 
     // check if personalizated format exist
     if (argv.format !== undefined) {
@@ -119,7 +119,7 @@ function pagePDF(html, files, argv) {
     } else if (argv.f !== undefined) {
       var format = argv.f;
     } else if (format === false) {
-      var format = 'A4';
+      var format = "A4";
     }
 
     // check if landscape (horizontal) is true or false
@@ -145,9 +145,9 @@ function pagePDF(html, files, argv) {
 
     // check if appendedCSS exists
     if (argv.css !== undefined) {
-      var appendedCSS = argv.css.split(',');
+      var appendedCSS = argv.css.split(",");
     } else if (argv.c !== undefined) {
-      var appendedCSS = argv.c.split(',');
+      var appendedCSS = argv.c.split(",");
     }
 
     // Append CSS files
@@ -166,7 +166,7 @@ function pagePDF(html, files, argv) {
           landscape: landscape,
           printBackground: true,
           displayHeaderFooter: true,
-          headerTemplate: '<div/>',
+          headerTemplate: "<div/>",
           footerTemplate:
             '<div style="text-align: right;width: 90vw;font-size: 12px;"><span style="margin-right: 1cm"><span class="pageNumber"></span></span></div>',
           margin: { top: 40, bottom: 40 },
@@ -188,13 +188,13 @@ function pagePDF(html, files, argv) {
 
     // Get before or after arguments in Mpdf
     try {
-      const markpdfCFG = JSON.parse(fs.readFileSync('mpdf.json', 'utf-8'));
+      const markpdfCFG = JSON.parse(fs.readFileSync("mpdf.json", "utf-8"));
       if (markpdfCFG.before != undefined && markpdfCFG.after != undefined) {
         mergePdf(path, markpdfCFG.before, markpdfCFG.after);
       } else if (markpdfCFG.before != undefined) {
-        mergePdf(path, markpdfCFG.before, '');
+        mergePdf(path, markpdfCFG.before, "");
       } else if (markpdfCFG.after != undefined) {
-        mergePdf(path, '', markpdfCFG.after);
+        mergePdf(path, "", markpdfCFG.after);
       }
     } catch (err) {}
 
@@ -202,13 +202,13 @@ function pagePDF(html, files, argv) {
     if (argv.before != undefined && argv.after != undefined) {
       mergePdf(path, argv.before, argv.after);
     } else if (argv.before != undefined) {
-      mergePdf(path, argv.before, '');
+      mergePdf(path, argv.before, "");
     } else if (argv.after != undefined) {
-      mergePdf(path, '', argv.after);
+      mergePdf(path, "", argv.after);
     }
 
     await browser.close();
   })();
 }
 
-module.exports = pagePDF
+module.exports = pagePDF;

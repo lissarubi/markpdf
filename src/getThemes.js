@@ -1,4 +1,4 @@
-const fs = require('fs');
+const fs = require("fs");
 
 function getThemes() {
   const themesCSS = [];
@@ -6,8 +6,8 @@ function getThemes() {
   //passsing directory of themes and callback function
   fs.readdirSync(`${__dirname}/themes`).forEach((file) => {
     //listing all files using forEach
-    themesCSS.push(fs.readFileSync(`${__dirname}/themes/${file}`, 'utf-8'));
-    themesNames.push(file.replace('.css', ''));
+    themesCSS.push(fs.readFileSync(`${__dirname}/themes/${file}`, "utf-8"));
+    themesNames.push(file.replace(".css", ""));
   });
   const themes = {
     css: themesCSS,
@@ -16,4 +16,4 @@ function getThemes() {
   return themes;
 }
 
-module.exports = getThemes
+module.exports = getThemes;
